@@ -1,0 +1,24 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "width": 300,
+  "height": 350,
+  "data": {
+    "url": "https://raw.githubusercontent.com/SanhanatChalanant/choro-map/main/dis.json",
+    "format": {"type": "topojson", "feature": "dis"}
+  },
+  "transform": [
+    {
+      "lookup": "properties.dname_e",
+      "from": {
+        "data": {
+          "url": "https://raw.githubusercontent.com/SanhanatChalanant/choro-map/main/bkkdata.csv"
+        },
+        "key": "name",
+        "fields": ["area"]
+      }
+    }
+  ],
+  "mark": "geoshape",
+  "encoding": {"color": {"field": "area", "type": "quantitative"}},
+  "config": {}
+}
